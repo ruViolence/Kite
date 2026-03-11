@@ -35,7 +35,6 @@ repositories {
     mavenCentral()
     maven { name = "alessiodp-snapshots"; url = uri("https://repo.alessiodp.com/snapshots") }
     maven { name = "papermc"; url = uri("https://repo.papermc.io/repository/maven-public/") }
-    maven { name = "faststats"; url = uri("https://repo.faststats.dev/releases") }
 }
 
 dependencies {
@@ -43,7 +42,6 @@ dependencies {
     paperLibrary(kotlin("stdlib"))
     // Runtime Dependencies
     paperLibrary("com.alessiodp.libby:libby-bukkit:2.0.0-SNAPSHOT")
-    paperLibrary("dev.faststats.metrics:bukkit:0.22.0")
     // Kotlin Scripting Libraries
     addDualDependency("org.jetbrains.kotlin:kotlin-scripting-jvm")
     addDualDependency("org.jetbrains.kotlin:kotlin-scripting-jvm-host")
