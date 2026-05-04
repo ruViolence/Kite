@@ -3,16 +3,11 @@ package dev.echonine.kite
 import dev.echonine.kite.commands.KiteCommands
 import dev.echonine.kite.scripting.ScriptManager
 import dev.echonine.kite.scripting.cache.ImportsCache
-import dev.echonine.kite.util.checkForUpdates
-import org.bukkit.event.EventHandler
-import org.bukkit.event.Listener
-import org.bukkit.event.server.ServerLoadEvent
 import org.bukkit.plugin.java.JavaPlugin
 import java.io.File
-import java.util.concurrent.TimeUnit
 
 @Suppress("unused")
-class Kite : JavaPlugin(), Listener {
+class Kite : JavaPlugin() {
 
     internal lateinit var scriptManager: ScriptManager
 
@@ -57,16 +52,6 @@ class Kite : JavaPlugin(), Listener {
         this.scriptManager.loadAll()
         // Registering command(s).
         this.server.commandMap.register("kite", KiteCommands(this))
-        // Registering event listener(s).
-        this.server.pluginManager.registerEvents(this, this)
-    }
-
-    // Scheduled after server has been fully loaded so that message appears at the very end of the initial log.
-    @EventHandler
-    fun onServerLoad(event: ServerLoadEvent) {
-        server.asyncScheduler.runDelayed(this, {
-            checkForUpdates()
-        }, 1, TimeUnit.SECONDS)
     }
 
     override fun onDisable() {
